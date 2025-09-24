@@ -8,11 +8,11 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class User {
-    private @Getter @Setter Long id;
-    private @Getter @Setter String name;
-    private @Getter @Setter String email;
-    private @Getter @Setter String password;
-    private @Getter @Setter List<Role> roles;
-    private @Getter @Setter Profile profile;
+    private @Getter Long id;
+    private @Getter String name;
+    private @Getter String email;
+    private @Getter String password;
+    private @Getter List<Role> roles;
+    private @Getter Profile profile;
 }
 
