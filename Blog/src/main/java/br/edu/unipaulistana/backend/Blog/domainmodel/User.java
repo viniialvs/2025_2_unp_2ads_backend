@@ -3,12 +3,13 @@ package br.edu.unipaulistana.backend.Blog.domainmodel;
 import lombok.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class User {
-    private @Getter Long id;
+    private @Getter UUID id;
     private @Getter String name;
     private @Getter String email;
     private @Getter String password;
