@@ -33,4 +33,13 @@ public class NonPersistentUserRepository {
     public List<User> findAll() {
         return this.internalState.stream().toList();
     }
+
+    public User findById(UUID id) {
+        for(User user : this.internalState) {
+            if(user.getId().equals(id)) {
+                return user;
+            }
+        }
+        return null;
+    }
 }
