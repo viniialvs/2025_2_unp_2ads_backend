@@ -2,7 +2,6 @@ package br.edu.unipaulistana.backend.Blog.service;
 
 import br.edu.unipaulistana.backend.Blog.domainmodel.User;
 import br.edu.unipaulistana.backend.Blog.domainmodel.repositories.NonPersistentUserRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +27,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(UUID id) {
         this.repository.removeById(id);
+    }
+
+    @Override
+    public User create(User user) {
+        if(user.getId() == null)
+            user.setId(UUID.randomUUID());
+
+       return this.repository.create(user);
     }
 }

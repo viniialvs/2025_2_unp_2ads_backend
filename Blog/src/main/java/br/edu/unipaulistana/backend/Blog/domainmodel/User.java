@@ -9,11 +9,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 public class User {
-    private @Getter UUID id;
-    private @Getter String name;
-    private @Getter String email;
-    private @Getter String password;
-    private @Getter List<Role> roles;
-    private @Getter Profile profile;
+    private @Getter @Setter UUID id;
+    private @Getter @Setter String name;
+    private @Getter @Setter String email;
+    private @Getter @Setter String password;
+    private @Getter @Setter List<Role> roles;
+    private @Getter @Setter Profile profile;
+
 }
 

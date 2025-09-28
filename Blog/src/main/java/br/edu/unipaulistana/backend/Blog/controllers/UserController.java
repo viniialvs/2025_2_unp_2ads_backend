@@ -22,14 +22,21 @@ public class UserController {
         return this.userService.findAll();
     }
 
-//  GET http://localhost:8080/users/{id}
+    //  GET http://localhost:8080/users/{id}
     @GetMapping("/{id}")
     public User findUserById(@PathVariable UUID id) {
         return this.userService.findById(id);
     }
-//  DELETE http://localhost:8080/users/{id}
+
+    //  DELETE http://localhost:8080/users/{id}
     @DeleteMapping("/{id}")
     public void deleteUserById(@PathVariable UUID id) {
         this.userService.deleteById(id);
     }
+    // POST
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        return this.userService.create(user);
+    }
+
 }
