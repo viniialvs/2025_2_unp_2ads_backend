@@ -4,6 +4,8 @@ package br.edu.unipaulistana.backend.Blog.controllers;
 import br.edu.unipaulistana.backend.Blog.domainmodel.User;
 import br.edu.unipaulistana.backend.Blog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,32 +13,43 @@ import java.util.UUID;
 
 //http://locallhost:8080/users
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
     @GetMapping
-    public List<User> findAll() {
-        return this.userService.findAll();
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(this.userService.findAll());
     }
 
     //  GET http://localhost:8080/users/{id}
     @GetMapping("/{id}")
-    public User findUserById(@PathVariable UUID id) {
-        return this.userService.findById(id);
+    public ResponseEntity<User> findUserById(@PathVariable UUID id) {
+        return ResponseEntity.ok(this.userService.findById(id));
     }
 
     //  DELETE http://localhost:8080/users/{id}
     @DeleteMapping("/{id}")
-    public void deleteUserById(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteUserById(@PathVariable UUID id) {
         this.userService.deleteById(id);
-    }
-    // POST
-    @PostMapping
-    public User createUser(@RequestBody User user) {
-        return this.userService.create(user);
+        return ResponseEntity.notFound().build();
     }
 
+    // POST
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return new ResponseEntity<>(this.userService.create(user), HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        return new ResponseEntity<>(this.userService.update(user), HttpStatus.CREATED);
+    }
+
+    @PatchMapping
+    public ResponseEntity<User> patchUser(@RequestBody User user) {
+        return new ResponseEntity<>(this.userService.partialUpdate(user), HttpStatus.CREATED);
+    }
 }
