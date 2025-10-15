@@ -40,12 +40,13 @@ public class UserControllerIntegrationTest {
                         post("/api/users")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(bodyCreate)))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", is(id)))
                 .andExpect(jsonPath("$.name",is("vinicius")))
                 .andReturn();
 
-        var created = objectMapper.readValue(postResult.getResponse().getContentAsByteArray(), User.class);
+        var created = objectMapper.readValue(postResult.getResponse().getContentAsByteArray(),
+                User.class);
         var returnedId = created.getId();
 
     }

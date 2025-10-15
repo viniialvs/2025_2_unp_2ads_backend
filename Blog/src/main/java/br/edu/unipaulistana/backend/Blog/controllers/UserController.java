@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 //http://locallhost:8080/users
@@ -26,7 +27,7 @@ public class UserController {
 
     //  GET http://localhost:8080/users/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<User> findUserById(@PathVariable UUID id) {
+    public ResponseEntity<Optional<User>> findUserById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.userService.findById(id));
     }
 
