@@ -1,6 +1,7 @@
 package br.edu.unipaulistana.backend.Blog.domainmodel.repositories;
 
 import br.edu.unipaulistana.backend.Blog.domainmodel.User;
+import jakarta.persistence.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
