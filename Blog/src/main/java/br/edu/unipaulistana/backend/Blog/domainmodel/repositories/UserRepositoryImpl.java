@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepositoryCustom<User, UUID>{
-
+    
     @PersistenceContext
     private final EntityManager entityManager;
 

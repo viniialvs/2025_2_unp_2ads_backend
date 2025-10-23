@@ -4,15 +4,16 @@ import br.edu.unipaulistana.backend.Blog.domainmodel.User;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+import br.edu.unipaulistana.backend.Blog.service.UserService;
 import com.github.javafaker.Faker;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class NonPersistentUserRepository {
-
     private List<User> internalState = new LinkedList<>();
 
     public NonPersistentUserRepository() {

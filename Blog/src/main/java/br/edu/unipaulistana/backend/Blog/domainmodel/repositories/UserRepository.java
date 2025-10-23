@@ -4,7 +4,6 @@ import br.edu.unipaulistana.backend.Blog.domainmodel.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public interface UserRepository extends
 """
         )
 
-        Optional<User> findByIdWithProfileAndPosts (@Param("ID") UUID id);
+        Optional<User> findByIdWithProfileAndPosts (@Param("id") UUID id);
 
         //Q2 JPQL usuarios cujo nome contem um paramatero que tenham pelo menos N roles.
         @Query(
@@ -48,7 +47,6 @@ public interface UserRepository extends
         order by u.name asc
 """
         )
-
-        List<User> findMinPostsAndNameLike ( @Param("minPosts") int minPosts, @Param("namePart") String namePart);
+        Optional<User> findMinRolesAndNameLike ( @Param("minRoles") int minRoles, @Param("namePart") String namePart);
 
 }
