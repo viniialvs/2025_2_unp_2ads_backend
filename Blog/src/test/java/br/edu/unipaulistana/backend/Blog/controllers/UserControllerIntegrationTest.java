@@ -36,7 +36,7 @@ public class UserControllerIntegrationTest {
     @Test
     @DisplayName("Fluxo completo: POST -> GET ALL -> GET_BY_ID -> PUT -> PATH -> GET -> ERRO404")
     public void fullFlow() throws Exception {
-        var bodyCreate = new User(null, "vinicius", "vinicius@gmail.com", "vini", null, null);
+        var bodyCreate = new User(null, "vinicius", "vinicius@gmail.com", "vini", null, null, null);
         var postResult = mockMvc.perform(
                         post("/api/users")
                                 .contentType(MediaType.APPLICATION_JSON)

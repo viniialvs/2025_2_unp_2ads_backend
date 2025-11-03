@@ -9,6 +9,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Entity
+@Table(name = "TBL_ROLES")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

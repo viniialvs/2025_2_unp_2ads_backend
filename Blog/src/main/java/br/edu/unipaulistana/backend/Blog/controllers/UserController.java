@@ -40,7 +40,7 @@ public class UserController {
     @Operation(method = "DELETE", summary = "Deletar usuário pelo ID")
     public ResponseEntity<Void> deleteUserById(@PathVariable UUID id){
         this.userService.deleteById(id);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok().build();
 
     }
 

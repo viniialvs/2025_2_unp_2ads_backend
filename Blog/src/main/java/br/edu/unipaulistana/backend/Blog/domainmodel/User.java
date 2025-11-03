@@ -38,6 +38,8 @@ public class User {
     @OneToOne
     private @Getter @Setter Profile profile;
 
+    @OneToMany
+    private @Getter @Setter Set<Post> posts;
 
     @Override
     public boolean equals(Object o) {
