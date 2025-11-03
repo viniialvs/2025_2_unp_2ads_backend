@@ -1,10 +1,8 @@
 package br.edu.unipaulistana.backend.Blog.service;
 
 import br.edu.unipaulistana.backend.Blog.domainmodel.User;
-import br.edu.unipaulistana.backend.Blog.domainmodel.repositories.NonPersistentUserRepository;
 import br.edu.unipaulistana.backend.Blog.domainmodel.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,36 +14,35 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
-    private final NonPersistentUserRepository nonPersistentUserRepository;
 
     @Override
     public List<User> findAll() {
-        return this.nonPersistentUserRepository.findAll();
+        return this.repository.findAll();
     }
 
     @Override
-    public User findById(UUID id) {
-        return this.nonPersistentUserRepository.findById(id);
+    public Optional<User> findById(UUID id) {
+        return this.repository.findById(id);
     }
 
     @Override
     public void deleteById(UUID id) {
-        this.nonPersistentUserRepository.removeById(id);
+        this.repository.deleteById(id);
     }
 
     @Override
     public User create(User user) {
-       return this.nonPersistentUserRepository.create(user);
+       return this.repository.save(user);
     }
 
     @Override
     public User update(User user) {
-        return this.nonPersistentUserRepository.update(user);
+        return this.repository.save(user);
     }
 
     @Override
     public User partialUpdate(User user) {
-        return this.nonPersistentUserRepository.update(user);
+        return this.repository.save(user);
     }
 
     public Optional<User> findByIdWithProfileAndPostsCriteria(UUID id) {
