@@ -12,11 +12,14 @@ import java.util.UUID;
 
 public interface UserRepository extends
     JpaRepository<User, UUID>,
-    QuerydslPredicateExecutor<User>,
+//    QuerydslPredicateExecutor<User>,
     UserRepositoryCustom<User, UUID>{
 
         @Query("SELECT u FROM User u WHERE u.email = :email")
         public Optional<User> findByEmail (String email);
+
+//        @Query("SELECT u FROM User u WHERE u.name = :name")
+//        public Optional<User> findByName (String name);
 
         public Optional<User> findByName (String name);
         public Optional<User> findByNameAndEmail (String name, String email);

@@ -2,12 +2,13 @@ package br.edu.unipaulistana.backend.Blog.service;
 
 import br.edu.unipaulistana.backend.Blog.domainmodel.User;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
     List<User> findAll();
 
     Optional<User> findById(UUID id);
